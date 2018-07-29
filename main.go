@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"go_apps/go_api_apps/github-twitter-app/config"
 	"go_apps/go_api_apps/github-twitter-app/src/controller"
+	"go_apps/go_api_apps/github-twitter-app/src/slack"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -16,6 +17,7 @@ func init() {
 func main() {
 	r := mux.NewRouter()
 	controller.Startup(r)
+	slack.Startup()
 
 	r.Path("/").HandlerFunc(index).Methods("GET")
 
