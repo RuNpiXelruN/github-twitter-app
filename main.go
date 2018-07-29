@@ -25,5 +25,5 @@ func main() {
 }
 
 func index(w http.ResponseWriter, req *http.Request) {
-	fmt.Println("Welcome to the Github/Twitter Go App")
+	fmt.Println("Welcome to the Github/Twitter/Slack Go App")
 }
