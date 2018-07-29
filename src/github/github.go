@@ -66,21 +66,21 @@ func handleGithubIssueEvent(e *github.IssuesEvent) {
 }
 
 func handleGithubPREvent(e *github.PullRequestEvent) {
-	// if *e.Action == "opened" || *e.Action == "reopened" {
-	PRDetails := e.PullRequest
-	UserDetails := PRDetails.User
-	Repo := e.Repo
-	Sender := e.Sender
+	if *e.Action == "opened" || *e.Action == "reopened" {
+		PRDetails := e.PullRequest
+		UserDetails := PRDetails.User
+		Repo := e.Repo
+		Sender := e.Sender
 
-	pullRequest := slack.PRSlack{
-		ID:             PRDetails.ID,
-		Action:         e.Action,
-		URL:            PRDetails.HTMLURL,
-		Title:          PRDetails.Title,
-		AvatarURL:      UserDetails.AvatarURL,
-		User:           Sender.Login,
-		RepositoryName: Repo.Name,
+		pullRequest := slack.PRSlack{
+			ID:             PRDetails.ID,
+			Action:         e.Action,
+			URL:            PRDetails.HTMLURL,
+			Title:          PRDetails.Title,
+			AvatarURL:      UserDetails.AvatarURL,
+			User:           Sender.Login,
+			RepositoryName: Repo.Name,
+		}
+		slack.SendPR(&pullRequest)
 	}
-	slack.SendPR(&pullRequest)
-	// }
 }
