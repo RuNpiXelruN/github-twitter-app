@@ -17,6 +17,7 @@ type PRSlack struct {
 	Action         *string `json:"action"`
 	URL            *string `json:"url"`
 	Title          *string `json:"title"`
+	PRNumber       *int    `json:"pr_number"`
 	AvatarURL      *string `json:"avatar_url"`
 	User           *string `json:"user"`
 	RepositoryName *string `json:"repository_name"`
@@ -52,10 +53,10 @@ func SendPR(pr *PRSlack) {
 	attachment := slack.Attachment{
 		Text:       "_" + *pr.User + "_ has *" + *pr.Action + "* a pull request for *" + *pr.RepositoryName + "*\n" + *pr.URL,
 		Color:      "#2196f3",
-		Title:      "New PR",
+		Title:      "Pull Request " + fmt.Sprint(*pr.PRNumber),
 		TitleLink:  *pr.URL,
 		ThumbURL:   *pr.AvatarURL,
-		Footer:     "created by me :)",
+		Footer:     "made by me :)",
 		FooterIcon: "https://user-images.githubusercontent.com/13185159/43365880-faded25a-9376-11e8-87dc-36aea54ac547.png",
 	}
 

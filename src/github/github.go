@@ -77,6 +77,7 @@ func handleGithubPREvent(e *github.PullRequestEvent) {
 			Action:         e.Action,
 			URL:            PRDetails.HTMLURL,
 			Title:          PRDetails.Title,
+			PRNumber:       PRDetails.Number,
 			AvatarURL:      UserDetails.AvatarURL,
 			User:           Sender.Login,
 			RepositoryName: Repo.Name,
