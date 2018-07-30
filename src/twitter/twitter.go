@@ -63,7 +63,7 @@ func SendIssueDetailsToTwitter(issTweet *IssueTweet) {
 	}
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 
-	// If a Twitter account dev account was available i would
+	// If a Twitter dev account was available i would
 	// now send my request and expect to recieve a response payload
 	// which included my `MediaID` needed for uploading images to twitter.
 
