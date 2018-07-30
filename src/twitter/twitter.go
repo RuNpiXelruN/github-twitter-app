@@ -44,7 +44,7 @@ func SendIssueDetailsToTwitter(issTweet *IssueTweet) {
 	}
 	defer resp.Body.Close()
 
-	file, err := os.Create("twitterImg1.jpg")
+	file, err := os.Create("twitterImg.jpg")
 	if err != nil {
 		fmt.Println("Error creating image file")
 	}
